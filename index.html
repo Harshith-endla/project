@@ -166,11 +166,6 @@
           <li><a href="#categories">Categories</a></li>
           <li><a href="#products">Products</a></li>
           <li><a href="#cart">Cart</a></li>
-          <li id="cart-info">
-            Cart: <span id="cart-items">0</span> items - ₹<span id="cart-total"
-              >0</span
-            >
-          </li>
         </ul>
       </nav>
     </header>
@@ -216,6 +211,78 @@
             <img src="images/iphone.jpg" alt="Smartphone" />
             <h3 id="productName">Iphone 16 pro max</h3>
             <p id="productPrice">₹1,44,000</p>
+            <button>Add to Cart</button>
+          </div>
+          <div class="product-card">
+            <img src="images/laptop.jpg" alt="Laptops" />
+            <h3 id="productName">Mac Book</h3>
+            <p id="productPrice">₹2,50,000</p>
+            <button>Add to Cart</button>
+          </div>
+          <div class="product-card">
+            <img src="images/nikon.jpg" alt="camera" />
+            <h3 id="productName">Nikon Camera</h3>
+            <p id="productPrice">₹1,44,000</p>
+            <button>Add to Cart</button>
+          </div>
+          <div class="product-card">
+            <img src="images/sony.avif" alt="Headphones" />
+            <h3 id="productName">Sony Headphones</h3>
+            <p id="productPrice">₹4,000</p>
+            <button>Add to Cart</button>
+          </div>
+          <!-- Add other product cards here -->
+        </div>
+        <div class="product-grid">
+          <div class="product-card">
+            <img src="images/hometreater.jpg" alt="hometreater" />
+            <h3 id="productName">Hometreater</h3>
+            <p id="productPrice">₹25,000</p>
+            <button>Add to Cart</button>
+          </div>
+          <div class="product-card">
+            <img src="images/guiter.jpg" alt="Musical Instruments" />
+            <h3 id="productName">Guiter</h3>
+            <p id="productPrice">₹40,000</p>
+            <button>Add to Cart</button>
+          </div>
+          <div class="product-card">
+            <img src="images/tv.jpg" alt="Television" />
+            <h3 id="productName">Television</h3>
+            <p id="productPrice">₹50,000</p>
+            <button>Add to Cart</button>
+          </div>
+          <div class="product-card">
+            <img src="images/AC.jpg" alt="a.c" />
+            <h3 id="productName">A.C</h3>
+            <p id="productPrice">₹24,000</p>
+            <button>Add to Cart</button>
+          </div>
+          <!-- Add other product cards here -->
+        </div>
+        <div class="product-grid">
+          <div class="product-card">
+            <img src="images/air_tag.jpg" alt="tracker" />
+            <h3 id="productName">Air Tracker</h3>
+            <p id="productPrice">₹3,500</p>
+            <button>Add to Cart</button>
+          </div>
+          <div class="product-card">
+            <img src="images/watch.jpg" alt="smartwatch" />
+            <h3 id="productName">Smartwatch</h3>
+            <p id="productPrice">₹5,000</p>
+            <button>Add to Cart</button>
+          </div>
+          <div class="product-card">
+            <img src="images/cctv.webp" alt="cctv-camera" />
+            <h3 id="productName">Security Camera</h3>
+            <p id="productPrice">₹6,000</p>
+            <button>Add to Cart</button>
+          </div>
+          <div class="product-card">
+            <img src="images/stove.jpg" alt="stove" />
+            <h3 id="productName">Induction Stove</h3>
+            <p id="productPrice">₹15,000</p>
             <button>Add to Cart</button>
           </div>
           <!-- Add other product cards here -->
@@ -276,11 +343,13 @@
         button.addEventListener("click", (event) => {
           const productCard = event.target.closest(".product-card");
           const productName = productCard.querySelector("h3").textContent;
+
+          // Remove commas and convert price string to a number
           const productPrice = parseInt(
             productCard
               .querySelector("p")
               .textContent.replace("₹", "")
-              .replace(",", "")
+              .replace(/,/g, "")
           );
 
           // Add item to the cart
@@ -318,11 +387,11 @@
           cartContents.innerHTML = cart.items
             .map(
               (item) => `
-            <tr>
-              <td>${item.name}</td>
-              <td>₹${item.price.toLocaleString()}</td>
-              <td><button class="remove-btn" data-id="${item.id}">Remove</button></td>
-            </tr>`
+      <tr>
+        <td>${item.name}</td>
+        <td>₹${item.price.toLocaleString()}</td>
+        <td><button class="remove-btn" data-id="${item.id}">Remove</button></td>
+      </tr>`
             )
             .join("");
         }
