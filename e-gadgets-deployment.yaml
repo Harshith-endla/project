@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: e-gadgets-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: e-gadgets
+  template:
+    metadata:
+      labels:
+        app: e-gadgets
+    spec:
+      containers:
+      - name: e-gadgets
+        image: <harshithvarma08/e-gadgets>/e-gadgets:latest
+        ports:
+        - containerPort: 3000
+        env:
+        - name: NODE_ENV
+          value: "production"
