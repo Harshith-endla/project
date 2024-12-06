@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: e-gadgets
-        image: <harshithvarma08/e-gadgets>/e-gadgets:latest
+        image: harshithvarma08/e-gadgets:latest
         ports:
         - containerPort: 3000
         env:
