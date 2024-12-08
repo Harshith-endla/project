@@ -3,12 +3,11 @@ kind: Service
 metadata:
   name: e-gadgets-service
 spec:
+  type: LoadBalancer
   selector:
     app: e-gadgets
   ports:
-  - protocol: TCP
-    port: 3000
-    targetPort: 3000
-  type: LoadBalancer
-~
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
 
