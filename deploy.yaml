@@ -1,0 +1,23 @@
+---
+- name: Deploy E-Gadgets Application
+  hosts: minikube
+  become: yes  # If you need sudo permissions
+  tasks:
+    - name: Ensure Docker is installed
+      apt:
+        name: docker.io
+        state: present
+
+    - name: Pull e-gadgets Docker image
+      docker_image:
+        name: harshithvarma08/e-gadgets
+        source: pull
+
+    - name: Run the e-gadgets application container
+      docker_container:
+        name: e-gadgets
+        image: harshithvarma08/e-gadgets
+        state: started
+        restart_policy: always
+        ports:
+          - "3000:3000"
